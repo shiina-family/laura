@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -31,6 +31,3 @@ jobs:
             REMOTE_HOST: ${{ secrets.DEPLOY_SERVER_HOST }}
             REMOTE_USER: ${{ secrets.DEPLOY_SERVER_USER }}
             TARGET: /home/${{ secrets.DEPLOY_SERVER_USER }}/laura
-            
-      - name: Start
-        run: npm run start
