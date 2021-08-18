@@ -1,4 +1,4 @@
-name: deploy to VPS
+name: Deploy to VPS
 
 on:
   push:
@@ -12,10 +12,19 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: build
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'npm'
+      
+      - name: Install npm dependencies
+        run: npm i
+
+      - name: Run build task
         run: npm run build
         
-      - name: deploy
+      - name: SSH Deploy
         uses: easingthemes/ssh-deploy@main
         env:
             SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_SERVER_PRIVATE_KEY }}
@@ -23,5 +32,5 @@ jobs:
             REMOTE_USER: ${{ secrets.DEPLOY_SERVER_USER }}
             TARGET: /home/${{ secrets.DEPLOY_SERVER_USER }}/laura
             
-      - name: start
+      - name: Start
         run: npm run start
