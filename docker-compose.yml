@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  laura:
+    container_name: laura
+    image: node
+    volumes:
+      - /home/deploy/laura:/code
+    working_dir: /code
+    command: npm start

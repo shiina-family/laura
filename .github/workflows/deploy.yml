@@ -31,3 +31,11 @@ jobs:
             REMOTE_HOST: ${{ secrets.DEPLOY_SERVER_HOST }}
             REMOTE_USER: ${{ secrets.DEPLOY_SERVER_USER }}
             TARGET: /home/${{ secrets.DEPLOY_SERVER_USER }}/laura
+
+      - name: Restart Docker Compose
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DEPLOY_SERVER_HOST }}
+          username: ${{ secrets.DEPLOY_SERVER_USER }}
+          key: ${{ secrets.DEPLOY_SERVER_PRIVATE_KEY }}
+          script: docker-compose up -d
