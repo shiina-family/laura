@@ -38,4 +38,6 @@ jobs:
           host: ${{ secrets.DEPLOY_SERVER_HOST }}
           username: ${{ secrets.DEPLOY_SERVER_USER }}
           key: ${{ secrets.DEPLOY_SERVER_PRIVATE_KEY }}
-          script: docker-compose up -d
+          script: |
+            cd /home/${{ secrets.DEPLOY_SERVER_USER }}/laura
+            docker-compose up -d
