@@ -21,8 +21,8 @@ jobs:
       - name: Install npm dependencies
         run: npm i
 
-      - name: Run build task
-        run: npm run build
+      - name: Run compile task
+        run: npm run compile
         
       - name: SSH Deploy
         uses: easingthemes/ssh-deploy@main
