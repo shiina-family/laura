@@ -8,3 +8,4 @@ services:
       - /home/deploy/laura:/code
     working_dir: /code
     command: npm start
+    restart: always
