@@ -30,6 +30,7 @@ jobs:
             SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_SERVER_PRIVATE_KEY }}
             REMOTE_HOST: ${{ secrets.DEPLOY_SERVER_HOST }}
             REMOTE_USER: ${{ secrets.DEPLOY_SERVER_USER }}
+            REMOTE_PORT: ${{ secrets.DEPLOY_SERVER_PORT }}
             TARGET: /home/${{ secrets.DEPLOY_SERVER_USER }}/laura
 
       - name: Restart Docker Compose
@@ -37,6 +38,7 @@ jobs:
         with:
           host: ${{ secrets.DEPLOY_SERVER_HOST }}
           username: ${{ secrets.DEPLOY_SERVER_USER }}
+          port: ${{ secrets.DEPLOY_SERVER_PORT }}
           key: ${{ secrets.DEPLOY_SERVER_PRIVATE_KEY }}
           script: |
             cd /home/${{ secrets.DEPLOY_SERVER_USER }}/laura
