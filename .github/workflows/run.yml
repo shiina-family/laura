@@ -19,6 +19,19 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: 'npm'
+      
+      - name: Install npm dependencies
+        run: npm i
+
+      - name: Run compile task
+        run: npm run compile
+
       - name: Prepare SSH
         run: |
           mkdir -p ~/.ssh
